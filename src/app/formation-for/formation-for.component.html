@@ -1,0 +1,33 @@
+<!-- Barre latérale -->
+<app-side-bar-formateur (toggle)="onSidebarToggle($event)"></app-side-bar-formateur>
+
+<!-- Contenu principal -->
+<div class="container-xl px-4 mt-4 main-content" [ngClass]="{'collapsed': isSidebarCollapsed}">
+  <div *ngIf="currentFormation">
+    <h1>{{ currentFormation.title }}</h1>
+    <div [innerHTML]="currentFormation.content"></div>
+    
+    <div class="formation-details">
+      <p><strong>Durée :</strong> {{ currentFormation.duration }}</p>
+      <p><strong>Date de début :</strong> {{ currentFormation.date }}</p>
+      <p><strong>Formateur :</strong> {{ currentFormation.formateur?.firstname }} {{ currentFormation.formateur?.lastname }}</p>
+    </div>
+
+    <div class="links">
+      <h4>Liens</h4>
+      <p *ngIf="currentFormation.meetingLink">
+        <a [href]="currentFormation.meetingLink" target="_blank">Rejoindre la réunion</a>
+      </p>
+      <p *ngIf="currentFormation.documentLink">
+        <a [href]="currentFormation.documentLink" target="_blank">Accéder au document</a>
+      </p>
+      <p *ngIf="currentFormation.videoLink">
+        <a [href]="currentFormation.videoLink" target="_blank">Voir la dernière réunion</a>
+      </p>
+    </div>
+  </div>
+  
+  <div *ngIf="!currentFormation">
+    <p>Formation non trouvée.</p>
+  </div>
+</div>

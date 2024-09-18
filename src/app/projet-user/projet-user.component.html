@@ -1,0 +1,23 @@
+<div class="container-fluid p-0">
+    <app-side-bar-user (toggle)="onSidebarToggle($event)"></app-side-bar-user>
+  
+    <div class="main-content" [class.collapsed]="isSidebarCollapsed">
+      <div class="container p-0" >
+        <h1 class="h3 mb-3">Projets   </h1>
+        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-3"*ngFor="let projet of Projects" >
+            <div class="card">
+              <div class="card-header px-4 pt-4">
+                <h5 class="card-title mb-0"> {{projet.title}} </h5>
+              </div>
+              <div class="card-body px-4 pt-2">
+                <p>{{projet.description}}</p>
+              </div>
+            </div>
+          </div>
+  
+          
+  
+        </div>
+  
